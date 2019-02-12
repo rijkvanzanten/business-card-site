@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #2B0A15;
+}
+
+#card-container {
+  perspective: 1000px;
+}
+
+#card-container.flip #card {
+  transform: rotateY(180deg);
+}
+
+/* Hide the glare layer while the spin transition is in effect */
+.js-tilt-glare {
+  opacity: 1;
+  transition: opacity 100ms ease-in-out;
+}
+
+.js-tilt-glare.hide {
+  opacity: 0;
+}
+
+#card-container, #front, #back {
+  width: 378px;
+  height: 218px;
+}
+
+@media (orientation: portrait) {
+  #card-container, #front, #back {
+    width: 218px;
+    height: 378px;
+  }
+}
+
+#card {
+  transition: 600ms;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+#front, #back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#front {
+  transform: rotateY(0deg);
+  background-color: red;
+}
+
+#back {
+  transform: rotateY(180deg);
+  background-color: blue;
+}
