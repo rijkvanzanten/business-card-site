@@ -52,10 +52,17 @@ body {
 
 #front {
   transform: rotateY(0deg);
-  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#front svg {
+  width: 80px;
+  height: auto;
 }
 
 #back {
   transform: rotateY(180deg);
-  background-color: blue;
+  background-color: #fafaf4;
 }
