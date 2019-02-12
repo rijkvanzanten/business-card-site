@@ -129,7 +129,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url(/paper-texture.png);
+  background-image: url(paper-texture.png);
   opacity: 0.5;
   user-select: none;
   pointer-events: none;
