@@ -4,10 +4,18 @@
 
 body {
   background-color: #2B0A15;
+  font-family: "Source Sans Pro", "Open Sans", "Helvetica", sans-serif;
+  color: #333;
 }
 
 #card-container {
   perspective: 1000px;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  cursor: pointer;
+  user-select: none;
+  transform-style: preserve-3d;
 }
 
 #card-container.flip #card {
@@ -17,11 +25,11 @@ body {
 /* Hide the glare layer while the spin transition is in effect */
 .js-tilt-glare {
   opacity: 1;
-  transition: opacity 100ms ease-in-out;
 }
 
 .js-tilt-glare.hide {
   opacity: 0;
+  transition: opacity 100ms;
 }
 
 #card-container, #front, #back {
@@ -40,6 +48,13 @@ body {
   transition: 600ms;
   transform-style: preserve-3d;
   position: relative;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  width: 100%;
+  height: 100%;
+}
+
+#card:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 #front, #back {
@@ -65,4 +80,57 @@ body {
 #back {
   transform: rotateY(180deg);
   background-color: #fafaf4;
+  padding: 20px;
+}
+
+#back h1 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0;
+}
+
+#back #title {
+  margin: 0;
+  font-family: "Source Serif Pro", serif;
+}
+
+#back nav {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+#back nav a {
+  color: inherit;
+  margin: 0;
+}
+
+@media (orientation: landscape) {
+  #back nav a + a::before {
+    content: "•";
+    display: inline-block;
+    pointer-events: none;
+    text-decoration: none;
+    margin-left: 8px;
+    margin-right: 10px;
+  }
+}
+
+@media (orientation: portrait) {
+  #back nav a {
+    display: block;
+  }
+}
+
+.texture {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url(/paper-texture.png);
+  opacity: 0.5;
+  user-select: none;
+  pointer-events: none;
 }

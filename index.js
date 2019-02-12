@@ -3,7 +3,8 @@ var cardFront = document.querySelector("#front");
 var cardBack = document.querySelector("#back");
 var cardTitle = document.querySelector("#title");
 
-var i = 0;
+// Start the page with a random starting point
+var i = Math.floor(Math.random() * 4);
 
 var content = [
   {
@@ -27,7 +28,9 @@ var content = [
 VanillaTilt.init(cardContainer, {
   reverse: true,
   scale: 1.1,
-  glare: true
+  glare: true,
+  max: 20,
+  "max-glare": 0.7
 });
 
 // glareContainer only exists after the VanillaTilt init call above
@@ -40,6 +43,9 @@ changeFront();
 changeBack();
 
 function onCardClick(event) {
+  // Don't trigger the card flip if the clicked on element is an anchor tag
+  if (event.target.tagName.toLowerCase() === "a") return;
+
   // If the card is flipped from the back to the front
   if (cardContainer.classList.contains("flip")) {
     i++;
@@ -58,7 +64,7 @@ function onCardClick(event) {
 
   setTimeout(function() {
     glareContainer.classList.remove("hide");
-  }, 400); // 600ms === duration of hide animation
+  }, 600); // 600ms === duration of hide animation
 }
 
 function changeFront() {
